@@ -4,6 +4,8 @@ $font-color: #444444;
 $accent-color: #a30e0e;
 $cta_color: #39990f;
 $title-font-size: 1.5rem;
+$tablet: "(min-width: 768px)";
+$mobile-l: "(min-width: 426px)";
 
 :root {
     font-family: 'Open Sans', sans-serif;
@@ -11,7 +13,7 @@ $title-font-size: 1.5rem;
     font-size: 20px;
     scroll-behavior: smooth;
 }
-a:visited {
+a, a:visited {
     color: $font-color;
 }
 .container{
@@ -34,6 +36,63 @@ header {
     background-position: center;
     display: flex;
     flex-direction: column;
+    .topbar {
+        padding: 1rem;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @media (min-width: 500px) {
+            justify-content: space-between;
+        }
+        .topbar_logo {
+            color: $accent-color;
+            font-weight: 700;
+            width: 66%;
+            @media (min-width: 500px) {
+                width: max-content;
+            }
+        }
+        .hamburger-menu {
+            margin-left: auto;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            gap: 5px;
+            @media (min-width: 500px) {
+                display: none;
+            }
+        }
+        .hamburger-menu input {
+            appearance: none;
+        }
+        .hamburger-menu input,
+        .hamburger-menu::before,
+        .hamburger-menu::after {
+            content: "";
+            width: 30px;
+            height: 5px;
+            background-color: $font-color;
+            align-self: flex-end;
+        }
+        .topbar_nav {
+            display: none;
+            @media (min-width: 500px) {
+                display: block;
+                ul {
+                    display: flex;
+                }
+            }
+        }
+        .hamburger-menu:has(input:checked) ~ .topbar_nav {
+            display: flex;
+            margin: 1rem auto 0 auto;
+            li {
+                margin: 0.5rem;
+            }
+        }
+    }
     .hero-section {
         color: $main-color;
         margin-top: auto;
@@ -51,52 +110,6 @@ header {
             font-weight: 600;
         }
     }
-}
-.topbar {
-    padding: 1rem;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    .topbar_logo {
-        color: $accent-color;
-        font-weight: 700;
-        width: 66%;
-    }
-    .hamburger-menu {
-        margin-left: auto;
-        align-self: flex-end;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-    .hamburger-menu input {
-        appearance: none;
-    }
-    .hamburger-menu input,
-    .hamburger-menu::before,
-    .hamburger-menu::after {
-        content: "";
-        width: 30px;
-        height: 5px;
-        background-color: $font-color;
-    }
-    .topbar_nav {
-        display: none;
-        margin: 0 auto;
-        padding: 1rem 0 0 0;
-        li {
-            padding: 0.5rem;
-        }
-    }
-    .hamburger-menu:has(input:checked) ~ .topbar_nav {
-        display: block;
-    }
-}
-.topbar, .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 .topbar, .section {
     background-color: $main-color;
@@ -123,6 +136,17 @@ header {
     .section_content {
         margin-bottom: 1rem;
         padding: 0 1rem;
+        @media #{$mobile-l} {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            article {
+                max-width: 50%;
+                @media #{$tablet} {
+                    width: 33%;
+                }
+            }
+        }
         img {
             width: 100%;
             border-radius: 50%;
