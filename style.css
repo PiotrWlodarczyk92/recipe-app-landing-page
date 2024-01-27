@@ -9,10 +9,13 @@ a, a:visited {
   color: #444444;
 }
 
-.container {
-  padding: 0 1rem;
-}
-
+/*.container{
+    margin: 0 auto;
+    @media (min-width: 1025px) {
+        width: 100%;
+        padding: 0 1rem;
+    }
+}*/
 .cta-button {
   display: inline-block;
   background-color: #39990f;
@@ -20,6 +23,17 @@ a, a:visited {
   border-radius: 0.5rem;
   color: #eeeeee;
   font-weight: 600;
+}
+
+.container {
+  width: 100%;
+  padding: 0 2rem;
+}
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
 }
 
 header {
@@ -33,30 +47,33 @@ header {
   flex-direction: column;
 }
 header .topbar {
-  padding: 1rem;
   width: 100%;
   position: absolute;
+}
+header .topbar .container {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  height: 100%;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 @media (min-width: 500px) {
-  header .topbar {
+  header .topbar .container {
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
 }
 header .topbar .topbar_logo {
+  height: 100%;
   color: #a30e0e;
   font-weight: 700;
-  width: 66%;
-}
-@media (min-width: 500px) {
-  header .topbar .topbar_logo {
-    width: max-content;
-  }
 }
 header .topbar .hamburger-menu {
-  margin-left: auto;
+  width: 100%;
+  position: absolute;
+  right: 2rem;
+  top: 0.5rem;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
@@ -81,21 +98,24 @@ header .topbar .hamburger-menu::after {
 }
 header .topbar .topbar_nav {
   display: none;
+  /*position: absolute;
+  top: 2.5rem;*/
+  text-align: center;
+  background-color: #eeeeee;
+}
+header .topbar .topbar_nav li {
+  padding: 0.5rem;
 }
 @media (min-width: 500px) {
   header .topbar .topbar_nav {
-    display: block;
+    display: inline-block;
   }
   header .topbar .topbar_nav ul {
     display: flex;
   }
 }
-header .topbar .hamburger-menu:has(input:checked) ~ .topbar_nav {
-  display: flex;
-  margin: 1rem auto 0 auto;
-}
-header .topbar .hamburger-menu:has(input:checked) ~ .topbar_nav li {
-  margin: 0.5rem;
+header .topbar div:has(input:checked) ~ .topbar_nav {
+  display: block;
 }
 header .hero-section {
   color: #eeeeee;
@@ -119,6 +139,12 @@ header .hero-section h2 {
   background-color: #eeeeee;
 }
 
+.section > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -139,35 +165,36 @@ header .hero-section h2 {
   background-color: #a30e0e;
   margin: 8px;
 }
-.section .section_content {
-  margin-bottom: 1rem;
-  padding: 0 1rem;
-}
-@media (min-width: 426px) {
+@media (min-width: 1024px) {
   .section .section_content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .section .section_content article {
-    max-width: 50%;
   }
 }
-@media (min-width: 426px) and (min-width: 768px) {
-  .section .section_content article {
-    width: 33%;
-  }
+.section .section_content article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 3rem;
 }
-.section .section_content img {
-  width: 100%;
+.section .section_content article p {
+  max-width: 500px;
+}
+.section .section_content article img {
+  max-width: 200px;
   border-radius: 50%;
-  margin: 1rem 0;
 }
 
 .footer {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  width: 100%;
+  padding: 1rem;
   background-color: #222222;
   color: #eeeeee;
   font-size: 0.75rem;
+}
+.footer .container {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
